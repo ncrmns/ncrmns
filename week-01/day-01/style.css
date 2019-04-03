@@ -1,0 +1,119 @@
+body {
+    background-color: #999999;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    background-image: url(assets/back.png);
+    background-size: cover;
+}
+
+
+nav {
+    height: 40px;
+    background: #663333;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    padding-left: 100px;
+    border: 1px solid black;
+    font-size: 25px;
+    background-image: url(assets/Light-Wood-Background-1024x640.jpg);
+}
+
+h1, 
+button, 
+form {
+    margin: 20px 150px;
+}
+
+
+h1 {
+    font-size: 25px;
+    margin-left: 150px;
+}
+
+button {
+    margin-top: 0px; 
+}
+
+h2 {
+    font-size: 15px;
+    margin-bottom: 0px;
+}
+    
+input {
+    text-align: left;
+    border-radius: 4px;
+    margin-bottom: 20px;
+        
+    }
+
+    
+form,
+.posts {
+    width: 80vw;
+    padding: 30px 30px 60px 30px;
+    margin-top: 15px;
+    margin-left: 150px;
+    background: rgba(255,255,255,.3);
+    border-radius: 10px;
+    
+}
+
+button {
+    font-family: 'Ubuntu', sans-serif;
+    float: right;
+    background-color: #666633;
+    color: aliceblue;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.navtitle {
+    font-weight: bold;
+    margin-top: 5px;
+    margin-left: 40px;
+}
+
+.input {
+    background: none;
+    border: solid 2px #663333;
+    border-radius: 4px;
+}
+
+.inputbig {
+    height: 200px;
+    width: 80vw;
+}
+
+hr {
+    
+    margin-top: 60px; 
+    margin-left: 150px;
+    width: 83vw;
+    border: 2px solid #663333;
+    border-radius: 3px;
+}
+
+   
+::selection {
+    background-color: #663333;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
