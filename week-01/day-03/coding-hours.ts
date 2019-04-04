@@ -23,6 +23,7 @@ console.log( 'Coding hours in 17 weeks: ' + workhours + 'h' );
 
 console.log('Which is ~' + Math.ceil(workhours / sumhours * 100) + '% of the 17 weeks.' );
 
+console.log('Which is ~' + Math.ceil( daily * workday /  52 * 100) + '% of the avarage working hours.' );
 
 
 
