@@ -13,7 +13,7 @@
 
 
 'use strict';
-let lineCount: number = 6;
+let lineCount: number = 9;
 let line: string = '%';
 
 for (let i=lineCount; i>1 ; i--){
