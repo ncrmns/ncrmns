@@ -28,7 +28,7 @@ for (let i=1 ; i<=lineCount/2+1; i++){
 
     for (let j=1; j<=(i+i-1); j++){
         line = line + '*';  
-    }
+    } 
     console.log(line);
     line = ' ';
 }
