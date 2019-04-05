@@ -5,32 +5,29 @@
 //  Returns `-1` if the second string is not in the first one
 
 function substr(str: string, keyword: string) : number {
-    let help:number = -1;
+    let help:number = 0;
         for (let i=0; i<str.length; i++){
             if (str[i]===keyword[0]) {
                 for (let j=0; j<keyword.length; j++){
                     if (str[j+i]===keyword[j]){
-                        console.log('helpis:'+help);
                         help++;
+                    } else {
+                        help = 0;
+                    }
+                    if (help===keyword.length){
+                        return i;
+                        break;
                     }
                 }
             }
-        }
-        console.log('keywordlength'+keyword.length);
-
-        if (help-1==keyword.length){
-            return 8;
-        }else{
-            return -1;
-            }
-            
-    
+        } 
+        return -1; 
 }
 
 //  Example
 
 // should print: `17`
-console.log(substr("this is what I'm searching in", "in"));
+console.log(substr("this is what I'm searching in", "what"));
 
 // should print: `-1`
 console.log(substr("this is what I'm searching in", "not"));
