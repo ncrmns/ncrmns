@@ -4,9 +4,10 @@
 
 let x = 1;
 let a = 5;
-function printparams(a:number,b?:number):void {
-    console.log(a);    
-    console.log(b);
+function printparams(a:number,b?:number) {
+    for (let i=0; i<arguments.length; i++){
+    console.log(arguments[i]);
+    }
 
 }
 
