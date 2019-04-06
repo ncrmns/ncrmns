@@ -4,17 +4,15 @@
 
 let x = 1;
 let a = 5;
-function printparams() {
-    for (let i =0; i <arguments.length; i++){
-        return arguments[i];
-    }
+function printparams(a:number,b?:number):void {
+    console.log(a);    
+    console.log(b);
+
 }
 
 
- console.log(printparams(x,a));
- 
-
-
+printparams(x,a);
+printparams(x); 
 
 
 
