@@ -5,40 +5,39 @@
 //    0 0 1 0
 //    0 1 0 0
 //    1 0 0 0
-//
-// -  Print this two dimensional list to the console
-//
-// * size should depend on a variable
-// ** Relax, a matrix is just like an array
 
-let dim=4;
-let list:number[][]=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
-let line:number[][];
-
-
+let dim=7;
+let list:number[][]=[];
+let line=[];
 
 //  for (let i=0; i<dim; i++){
 //     line[i]=0;
 //     list.push(line);
 //  }
 
-
- for (let i=0; i<dim; i++){
-    for (let j=0; j<0; j++){
-        list[i][j]=0;
-    }
+for (let i=0; i<dim; i++){
+        list[i]=[];
+        for (let j=0; j<dim; j++){
+                list[i][j]=0;
+        }
 }
+
+console.log(list);
+console.log('----------')
+for (let i=0; i<dim; i++){
+    
+        list[i][dim-i-1]=1;
+        console.log(list);
+        
+}
+
+console.log('----------')
+
 
 for (let i=0; i<dim; i++){
-    for (let j=dim-i; j>0; j--){
-        list[i][j]=1;
-    }
+    console.log(list[i]);
 }
-
-// for (let i=0; i<dim; i++){
-//     console.log(list[i]);
-//}
-console.log(list);
+//console.log(list);
 
 
 
