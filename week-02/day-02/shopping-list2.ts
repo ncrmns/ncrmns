@@ -29,10 +29,20 @@ let alice: any = {
 
 console.log(pay(bob, map));
 console.log(pay(alice, map));
+if (more(alice, bob, 'Rice')===alice){
+    console.log('alice');
+}else{
+    console.log('bob');
+}
 
-function more(price:any, who:any, who2:any) {
-    for (let i=0; i<Object.keys(price).length; i++){
-        price[Object.keys(price)[i]]
+
+function more(who: any, who2: any, what: string) {
+    if (who.what > who2.what){
+        return who;
+    }else if (who.what<who2.what){
+        return who2;
+    }else{
+        return '';
     }
 }
 
