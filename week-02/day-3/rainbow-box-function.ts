@@ -16,8 +16,8 @@ let colors2:string[] = ['#E6E6FA','#D8BFD8','#DDA0DD','#EE82EE','#EE82EE','#DDA0
 
 for (let j=100;j>0;j--)
     for (let i=0; i<7; i++ ){
-        sqc((j*7-i)*30, colors2[i]);
-        console.log(colors2[i]);
+        sqc((j*7-i)*90, colors[i]);
+        console.log(colors[i]);
     }
 
 

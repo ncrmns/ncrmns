@@ -15,7 +15,7 @@ ctx.beginPath();
 ctx.rect(0, 0, 600, 600);
 ctx.fill();
 
-star(600);
+star(3);
 
 function star(qu) {
     for (let i=0; i<qu; i++){    
