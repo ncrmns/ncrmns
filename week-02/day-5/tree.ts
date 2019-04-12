@@ -9,21 +9,23 @@ ctx.fillStyle = 'rgb(0, 102, 102)';
 ctx.rect(0, 0, 600, 600);
 ctx.fill();
 //
+let ratio = Math.PI / 7;
+tree(300, 600, 120, Math.PI / 2, ratio);
 
-tree (300,600, 100, Math.PI/2);
-
-function tree(x, y, size, ang) {
-  if (size < 4) {
+function tree(x, y, size, ang, ratio) {
+  if (size < 13) {
     return;
   }
   ctx.beginPath();
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = 'rgba(255, 204, 0.01)';
   ctx.moveTo(x, y);
-  ctx.lineTo(x - Math.cos(ang)*size , y - Math.sin(ang)*size);
+  ctx.lineTo(x - Math.cos(ang) * size, y - Math.sin(ang) * size);
   ctx.stroke();
 
-  tree(x - Math.cos(ang)*size ,y - Math.sin(ang)*size ,size*2/3, ang + Math.PI/4);
-  tree(x - Math.cos(ang)*size ,y - Math.sin(ang)*size ,size*2/3, ang - Math.PI/4);
-  tree(x , y , size*2/3, ang)
+  tree(x - Math.cos(ang) * size, y - Math.sin(ang) * size, size * 0.75, ang + ratio, ratio);
+  tree(x - Math.cos(ang) * size, y - Math.sin(ang) * size, size * 0.75, ang - ratio, ratio);
+  tree(x - Math.cos(ang) * size, y - Math.sin(ang) * size, size * 0.75, ang, ratio);
 }
 
 
