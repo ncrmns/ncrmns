@@ -21,9 +21,8 @@ function circle(x, y, size) {
   ctx.stroke();
 
   circle(x, y - size / 2, size / 2);
-
-  circle(x - size/2*Math.cos(Math.PI/6), y + size/2*Math.sin(Math.PI/6), size / 2);
-  circle(x + size/2*Math.cos(Math.PI/6), y + size/2*Math.sin(Math.PI/6), size / 2);
+  circle(x - size / 2 * Math.cos(Math.PI / 6), y + size / 2 * Math.sin(Math.PI / 6), size / 2);
+  circle(x + size / 2 * Math.cos(Math.PI / 6), y + size / 2 * Math.sin(Math.PI / 6), size / 2);
 }
 
 
