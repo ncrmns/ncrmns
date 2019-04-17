@@ -15,4 +15,8 @@ class Sharpie {
   use(): void {
     this.inkAmount--;
   }
+
+  getInkAmount(){
+    return this.inkAmount;
+  }
 }
