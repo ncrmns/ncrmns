@@ -20,9 +20,11 @@ function print(dominoes: Domino[]) {
 let dominoes = initializeDominoes();
 let sorted : any[] = [];
 
+console.log(sorted);
 sorted.push(dominoes[0]);
+console.log(sorted);
 
-for (let i=0; i<dominoes.length; i ++){
+for (let i=0; i<dominoes.length; i++){
   for (let j=0; j<dominoes.length; j++){
     if (dominoes[j].getvalue('a')===sorted[i].getvalue('b')){
       sorted.push(dominoes[j]);
@@ -31,4 +33,4 @@ for (let i=0; i<dominoes.length; i ++){
 }
 
 
-print(sorted);
+// print(sorted);

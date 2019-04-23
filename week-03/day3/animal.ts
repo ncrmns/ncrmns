@@ -1,4 +1,5 @@
 'use strict';
+export {Animal};
 
 class Animal {
   hunger : number = 50;
@@ -9,15 +10,19 @@ class Animal {
     this.thirst = thirst;
   }
 
-  public eat():void {
+  gethunger(){
+    return this.hunger;
+  }
+
+  eat():void {
     this.hunger--;
   }
 
-  public drink():void {
+  drink():void {
     this.thirst--;
   }
 
-  public play():void {
+  play():void {
     this.hunger++;
     this.thirst++;
   }

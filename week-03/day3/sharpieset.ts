@@ -2,7 +2,11 @@
 import { Sharpie } from './sharpie';
 
 class Sharpieset {
-  sharpies: Sharpie[];
+  sharpies: Sharpie[] = [];
+
+  add(sharpie: Sharpie){
+    this.sharpies.push(sharpie);
+  }
 
   countusable() {
     let usable = 0;
@@ -23,20 +27,22 @@ class Sharpieset {
   }
 }
 
-let sharpieset1: Sharpieset = initializesharpie();
-for (let i=0; i<sharpieset1; i++){
-console.log(sharpieset1[i]);
-}
-
-sharpieset1.countusable()
 
 
-function initializesharpie(): Sharpie[] {
-  return [
-    new Sharpie('blue', 4, 3),
-    new Sharpie('red', 4, 80),
-    new Sharpie('purple', 4, 40),
-    new Sharpie('green', 4, 0),
-    new Sharpie('brown', 4, 20)
-  ];
-}
+let sharpie1: Sharpie = new Sharpie('blue', 4, 3);
+let sharpie2: Sharpie = new Sharpie('red', 4, 80);
+let sharpie3: Sharpie = new Sharpie('purple', 4, 40);
+let sharpie4: Sharpie = new Sharpie('green', 4, 0);
+let sharpie5: Sharpie = new Sharpie('brown', 4, 20);
+
+let sharpies: Sharpieset = new Sharpieset();
+
+sharpies.add(sharpie1);
+sharpies.add(sharpie2);
+sharpies.add(sharpie3);
+sharpies.add(sharpie4);
+sharpies.add(sharpie5);
+
+console.log(sharpies.countusable());
+sharpies.removetrash();
+console.log(sharpies.countusable());

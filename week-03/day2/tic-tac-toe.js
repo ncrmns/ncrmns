@@ -21,9 +21,10 @@ function ticTacResult(path) {
   const arr = fs.readFileSync(path, 'UTF-8').split('\n');
   for (let i = 0; i < arr.length; i++) {
     arr2d.push(arr[i].split(''));
+  }
+  console.log(arr2d);
   ///////////////// import file ////////////////////
   //////////////// main function ///////////////////
-  }
   if ( winchecker(arr2d)!== undefined ){
     return winchecker(arr2d);
   }
