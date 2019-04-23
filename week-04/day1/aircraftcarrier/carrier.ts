@@ -21,8 +21,20 @@ class Carrier {
   }
 
   fill() {
+    let prior: Aircraft[] = [];
+    let rest: Aircraft[] = [];
     for (let i = 0; i < this.aircrafts.length; i++) {
-      this.ammostore = this.aircrafts[i].refill(this.ammostore);
+      if (this.aircrafts[i].isPriority()){
+        prior.push(this.aircrafts[i]);
+      } else {
+        rest.push(this.aircrafts[i]);
+      }
+    }
+    for (let i = 0; i < prior.length; i++) {
+      this.ammostore = prior[i].refill(this.ammostore);
+    }
+    for (let i= 0; i< rest.length; i++){
+      this.ammostore = rest[i].refill(this.ammostore);
     }
   }
 
