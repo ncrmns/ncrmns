@@ -1,4 +1,4 @@
-class Domino {
+class Dominoo {
   values: number[];
   constructor(valueA: number, valueB: number) {
       this.values = [valueA, valueB];
@@ -12,4 +12,4 @@ class Domino {
   }
 }
 
-export {Domino};
+export {Dominoo};
