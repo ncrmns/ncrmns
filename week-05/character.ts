@@ -19,8 +19,8 @@ abstract class Character {
 
 
 
-  setHP(value: number) {
-    this.HP += value;
+  damage(value: number) {
+    this.HP -= value;
     if (this.HP < 0) {
       this.alive = false;
     }
@@ -45,7 +45,7 @@ abstract class Character {
   strike(other: Character) {
     let SV: number = this.SP + 2 * d6();
     if (SV > other.getDP()) {
-      other.setHP(SV - other.getDP());
+      other.damage(SV - other.getDP());
     }
   }
 }
