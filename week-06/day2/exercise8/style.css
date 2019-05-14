@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container > ul {
+  display: flex;
+  align-items: flex-end;
+  background-color: yellow;
+  border: 4vh solid white;
+  height: 60vh;
+  justify-content: flex-end;
+}
+
+.item {
+  margin-right: 0.5vh;
+  left: 40vw;
+  background-color: purple;
+  width: 10vh;
+  height: 10vh;
+
+}
+
+ul > li {
+  list-style: none;
+}

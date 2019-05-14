@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+}
+
+
+header > ul {
+  display: flex;
+  position: fixed;
+  background-color: purple;
+  align-items: center;
+  width: 100vw;
+}
+
+ul > li {
+  list-style-type: none;
+  background-color: cyan;
+  height: 5vh;
+  width: 10vw;
+  margin: 1vh 2vw;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.yellow {
+  margin: 1vh 4vw 1vh 0.5vw;
+  background-color: yellow;
+  height: 100vh;
+  flex-grow: 2;
+  order: 2;
+}
+
+.green {
+  margin: 1vh 0.5vw 1vh 4vw;
+  background-color: green;
+  height: 100vh;
+  flex-grow: 1;
+}
+
+footer {
+  height: 5vh;
+  background-color: gray;
+}

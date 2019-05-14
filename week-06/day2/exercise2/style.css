@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aliceblue;
+  height: 20vh;
+  padding: 8vh;
+}
+
+.green {
+  background-color: green;
+  flex-grow: 1;
+}
+
+.yellow {
+  background-color: yellow;
+  flex-grow: 2;
+}
+
+.purple {
+  background-color: purple;
+  flex-grow: 1;
+}
+
+
+
+.item {
+  align-self: flex-end;
+  height: 20vh;
+}
