@@ -1,0 +1,18 @@
+body {
+  display: flex;
+  align-items: center;
+
+}
+div {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+.selected {
+  background-color: cadetblue;
+}
