@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <title>Document</title>
+</head>
+<body>
+<div class="page">
+
+  <div class="main box">
+    <% let link= 0 ; if (img - 1 == 0){link = images.length ;} else {link = img - 1;}%>
+    <a href="/?img=<%= link %>">
+      <div class="main arrow">
+        <img src="/static/left.svg">
+      </div>
+    </a>
+    
+    <div class="main imgbig">
+      <img  class= "imgbigitself" src="/static/<%= img %>.jpeg">
+      <div class="descriptionbox ">
+        <h1>Iceland</h1>
+        <p>
+          <%= desc[Math.floor(Math.random()*5)] %>
+        </p>
+      </div>
+    </div>
+    <% let link2 = 0; if (img +1 == images.length-1){link2 = 0 ;} else {link2 = img + 1;}%>
+    <a href="/?img=<%= link %>">
+    <div class="main arrow right">
+      <img src="/static/left.svg">
+    </div>
+    </a>
+  </div>
+  
+  <div class="slider">
+    <% for (let i = 0 ; i< images.length; i++){%>
+      <a href="/?img=<%= images[i] %>"><img class="thumbnail" src="/static/<%= images[i] %>.jpeg" height="100" width="100"> </a>
+    <% } %>
+  </div>
+  
+  
+  
+  
+  
+</div>
+</body>
+</html>

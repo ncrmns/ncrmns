@@ -1,0 +1,36 @@
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+
+}
+.firstline {
+  background-color: black;
+  color : white;
+}
+
+div {
+  margin : 20px;
+}
+
+li:nth-child(even){
+  background-color: grey;
+}
+
+nav {
+  display: flex;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+a {
+  margin: 10px;
+  text-decoration: none;
+  font-size: 20px;
+  text-transform: uppercase;
+}
