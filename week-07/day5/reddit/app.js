@@ -31,62 +31,113 @@ app.get('/posts', (req, res) => {
 });
 
 app.post('/posts', (req, res) => {
-  conn.query(`INSERT INTO posts (title, url, owner) VALUES ('${req.body.title}','${req.body.url}','${req.body.owner}');`, (err, posted) => {
+  conn.query(`INSERT INTO posts (title, url, owner) VALUES ('${req.body.title}','${req.body.url}','${req.query.user}');`, (err, posted) => {
     if (err) {
       console.log(err);
     } else {
-      console.log(`database updated with:(${req.body.title},${req.body.url},${req.body.owner})`);
+      console.log(`database updated with:(${req.body.title},${req.body.url},${req.query.user})`);
     }
     conn.query(`SELECT * FROM posts WHERE id = ${posted.insertId};`, (err, data)=>{
       res.status(200).json(data);
     });
   });
 });
-// how to handle users/passwords ?
+
 app.put('/posts/:id/upvote', (req, res) => { 
-  conn.query(`INSERT INTO votes (id, user_id) VALUES ('${req.params.id}','${req.body.username}');`, (err)=>{
-    if (err) {
-      console.log(err);
-  } else {
-    console.log('votes table updated');
-  }
-  });
-  conn.query(`UPDATE posts SET score = score + 1 WHERE id = ${req.params.id};`, (err)=>{
-    if (err){
-      console.log(err);
+  conn.query(`SELECT count(*) AS x FROM votes WHERE id = '${req.params.id}' AND username = '${req.query.user}';`, (err, count)=>{
+    console.log(count);
+    if (count[0].x > 0){
+      console.log('vote is already there');
+      conn.query(`DELETE FROM votes WHERE id = '${req.params.id}' AND username = '${req.query.user}';`, (err) => {
+        if (err){
+          console.log(err);
+        } else {
+          console.log('vote is deleted from votes table');
+        }
+      });
+      conn.query(`UPDATE posts SET score = score - 1 WHERE id = ${req.params.id};`, (err)=>{
+        if (err){
+          console.log(err);
+        } else {
+          console.log('score is updated -1');
+        }
+      });
+      res.status(200).send();
     } else {
-      console.log('database updated with upvote');
-    }});
-  conn.query(`SELECT * FROM posts WHERE id = ${req.params.id};`, (err, data)=>{
-    res.status(200).json(data);
-  });
+      conn.query(`INSERT INTO votes (id, username, vote) VALUES ('${req.params.id}','${req.query.user}','1');`, (err)=>{
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(`votes table updated with username=:${req.query.user} postID=${req.params.id}`);
+        }
+      });
+      conn.query(`UPDATE posts SET score = score + 1 WHERE id = ${req.params.id};`, (err)=>{
+        if (err){
+          console.log(err);
+        } else {
+          console.log('score is updated +1');
+        }});
+        conn.query(`SELECT * FROM posts WHERE id = ${req.params.id};`, (err, data)=>{
+          res.status(200).json(data);
+        });
+      }
+    });
 });
 
 app.put('/posts/:id/downvote', (req, res) => { 
-  conn.query(`UPDATE posts SET score = score - 1 WHERE id = ${req.params.id};`, (err)=>{
-    if (err){
-      console.log(err);
+  conn.query(`SELECT count(*) AS x FROM votes WHERE id = '${req.params.id}' AND username = '${req.query.user}';`, (err, count)=>{
+    console.log(count);
+    if (count[0].x > 0){
+      console.log('vote is already there');
+      conn.query(`DELETE FROM votes WHERE id = '${req.params.id}' AND username = '${req.query.user}';`, (err) => {
+        if (err){
+          console.log(err);
+        } else {
+          console.log('vote is deleted from votes table');
+        }
+      });
+      conn.query(`UPDATE posts SET score = score + 1 WHERE id = ${req.params.id};`, (err)=>{
+        if (err){
+          console.log(err);
+        } else {
+          console.log('score is updated +1');
+        }
+      });
+      res.status(200).send();
     } else {
-      console.log('database updated with downvote');
-    }});
-  conn.query(`SELECT * FROM posts WHERE id = ${req.params.id};`, (err, data)=>{
-    res.status(200).json(data);
-  });
+      conn.query(`INSERT INTO votes (id, username, vote) VALUES ('${req.params.id}','${req.query.user}','-1');`, (err)=>{
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(`votes table updated with username=:${req.query.user} postID=${req.params.id}`);
+        }
+      });
+      conn.query(`UPDATE posts SET score = score - 1 WHERE id = ${req.params.id};`, (err)=>{
+        if (err){
+          console.log(err);
+        } else {
+          console.log('score is updated -1');
+        }});
+        conn.query(`SELECT * FROM posts WHERE id = ${req.params.id};`, (err, data)=>{
+          res.status(200).json(data);
+        });
+      }
+    });
 });
-
+      
 app.delete('/posts/:id', (req,res) => {
   conn.query(`SELECT * FROM posts WHERE id = ${req.params.id};`, (err, data)=>{
     if (err){
       console.log(err);
     } else {
+      conn.query(`DELETE FROM posts WHERE id = ${req.params.id};`, (err)=>{
+        if (err){
+          console.log(err);
+        } else {
+          console.log(`record deleted from database id: ${req.params.id}`)
+        }
+      });
       res.status(200).json(data);
-    }
-  });
-  conn.query(`DELETE FROM posts WHERE id = ${req.params.id};`, (err)=>{
-    if (err){
-      console.log(err);
-    } else {
-      console.log(`record deleted from database id: ${req.params.id}`)
     }
   });
 });
