@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  let string = 'trees'
+  let limit = '16';
+  let url = `HTTP://api.giphy.com/v1/gifs/search?api_key=TK2ltzCQKYSJoKK44Mn6UwI580nZij7z&q=${string}&limit=${limit}`;
+  let urls = [];
+
+  let httpRequest = new XMLHttpRequest();
+  httpRequest.open('GET', url, true);
+  httpRequest.send();
+  httpRequest.onload = (data) => {
+    for (let i = 0; i < JSON.parse(data.target.response).data.length; i++) {
+      urls.push(JSON.parse(data.target.response).data[i].images.fixed_height.url);
+    }
+    let body = document.querySelector('body');
+    for (let i = 0; i < urls.length; i++) {
+      let img = document.createElement('img');
+      img.setAttribute('src', urls[i]);
+      body.appendChild(img);
+    }
+  };
+</script>
+
+</html>

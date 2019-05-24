@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <p>Enter Character name</p>
+  <form>
+    <input type='text'>
+    <button>Search</button>
+  </form>
+  <div>
+  </div>
+</body>
+<script>
+  let button = document.querySelector('button');
+  
+  button.addEventListener('click', ()=>{
+    let input = document.querySelector('input').value;
+    let url=`https://swapi.co/api/people/?search=${input}`;
+    let httpRequest = new XMLHttpRequest();
+    httpRequest.open('GET', url, true);
+    httpRequest.send();
+    
+    httpRequest.onload = (data) => {
+      let div = document.querySelector('div');
+      let ul = document.createElement('ul');
+      for (let i=0; i<JSON.parse(data.target.response).results.length; i++ ){
+        let li = document.createElement('li');
+
+        li.attributes('onclick', ()=>{
+          for (let j=0; j<JSON.parse(data.target.response).results[i].films.length; j++){
+            let httpRequest2 = new XMLHttpRequest();
+            httpRequest2.open('GET', JSON.parse(data.target.response).results[i].films[j], true);
+            httpRequest2.send();
+            httpRequest2.onload = (data2) => {
+              console.log(data2);
+            }
+            let li2 = document.createElement('li');
+            // li2.textContent = 
+          }
+        });
+        li.textContent = JSON.parse(data.target.response).results[i].name;
+        ul.appendChild(li);
+        div.appendChild(ul);  
+      }
+      console.log(JSON.parse(data.target.response).results[0].films);
+    }
+    event.preventDefault();
+  });
+</script>
+</html>
