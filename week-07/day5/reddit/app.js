@@ -6,8 +6,6 @@ const app = express();
 const PORT = 3000;
 require('dotenv').config();
 app.use(express.static('public'))
-// var bodyParser = require('body-parser');
-// app.use(bodyParser.json());
 app.use(express.json());
 
 const conn = mysql.createConnection({
@@ -33,27 +31,33 @@ app.get('/posts', (req, res) => {
 });
 
 app.post('/posts', (req, res) => {
-  conn.query(`INSERT INTO posts (title, url, owner) VALUES ('${req.body.title}','${req.body.url}','${req.body.owner}')`, (err, posted) => {
+  conn.query(`INSERT INTO posts (title, url, owner) VALUES ('${req.body.title}','${req.body.url}','${req.body.owner}');`, (err, posted) => {
     if (err) {
       console.log(err);
     } else {
       console.log(`database updated with:(${req.body.title},${req.body.url},${req.body.owner})`);
     }
-    conn.query(`SELECT * FROM posts WHERE id = ${posted.insertId}`, (err, data)=>{
+    conn.query(`SELECT * FROM posts WHERE id = ${posted.insertId};`, (err, data)=>{
       res.status(200).json(data);
     });
   });
 });
-
+// how to handle users/passwords ?
 app.put('/posts/:id/upvote', (req, res) => { 
-  conn.query(`INSERT INTO votes (id, user_id) VALUES ('${req.params.id}','${req.body.owner}')`)
+  conn.query(`INSERT INTO votes (id, user_id) VALUES ('${req.params.id}','${req.body.username}');`, (err)=>{
+    if (err) {
+      console.log(err);
+  } else {
+    console.log('votes table updated');
+  }
+  });
   conn.query(`UPDATE posts SET score = score + 1 WHERE id = ${req.params.id};`, (err)=>{
     if (err){
       console.log(err);
     } else {
       console.log('database updated with upvote');
     }});
-  conn.query(`SELECT * FROM posts WHERE id = ${req.params.id}`, (err, data)=>{
+  conn.query(`SELECT * FROM posts WHERE id = ${req.params.id};`, (err, data)=>{
     res.status(200).json(data);
   });
 });
@@ -65,20 +69,20 @@ app.put('/posts/:id/downvote', (req, res) => {
     } else {
       console.log('database updated with downvote');
     }});
-  conn.query(`SELECT * FROM posts WHERE id = ${req.params.id}`, (err, data)=>{
+  conn.query(`SELECT * FROM posts WHERE id = ${req.params.id};`, (err, data)=>{
     res.status(200).json(data);
   });
 });
 
 app.delete('/posts/:id', (req,res) => {
-  conn.query(`SELECT * FROM posts WHERE id = ${req.params.id}`, (err, data)=>{
+  conn.query(`SELECT * FROM posts WHERE id = ${req.params.id};`, (err, data)=>{
     if (err){
       console.log(err);
     } else {
       res.status(200).json(data);
     }
   });
-  conn.query(`DELETE FROM posts WHERE id = ${req.params.id}`, (err)=>{
+  conn.query(`DELETE FROM posts WHERE id = ${req.params.id};`, (err)=>{
     if (err){
       console.log(err);
     } else {
@@ -95,7 +99,7 @@ app.put('/posts/:id', (req,res)=>{
       console.log('record updated id: '+ req.params.id);
     }
   });
-  conn.query(`SELECT * FROM posts WHERE id = ${req.params.id}`, (err, data)=>{
+  conn.query(`SELECT * FROM posts WHERE id = ${req.params.id};`, (err, data)=>{
     res.status(200).json(data);
   });
 });
