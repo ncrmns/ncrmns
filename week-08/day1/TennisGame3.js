@@ -16,7 +16,7 @@ TennisGame3.prototype.getScore = function() {
       if (this.p1 == this.p2)
           return "Deuce";
       s = this.p1 > this.p2 ? this.p1N : this.p2N;
-      return ((this.p1 - this.p2) * (this.p1 - this.p2) == 1) ? "Advantage " + s : "Win for " + s;
+      return (Math.abs(this.p1 - this.p2) == 1) ? "Advantage " + s : "Win for " + s;
   }
 };
 
