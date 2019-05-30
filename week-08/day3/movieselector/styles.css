@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito Sans', sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color:snow;
+  height: 100vh;
+}
+
+form {
+  display: flex;
+  align-content: center;
+  margin : 100px;
+  padding : 100px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+  height: 100px;
+  width: 800px;
+  border-radius: 5px;
+}
+input,
+select {
+  width: 150px;
+}
+
+.buttons {
+  margin-top: 25px;
+}
