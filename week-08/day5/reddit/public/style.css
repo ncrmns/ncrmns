@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300&display=swap');
+
+* {
+  margin : 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  background-color: #FBF5E5;
+}
+div {
+  background-color: white;
+}
+
+.vote,
+.post,
+.content,
+.secondpar,
+.firstpar,
+body {
+  display: flex;
+}
+
+body,
+.vote,
+.firstpar,
+.secondpar  {
+  flex-direction: column;
+}
+.content,
+.banner {
+  width: 70vw;
+  justify-content: space-between;
+}
+.secondpar {
+  width : 300px;
+}
+
+body {
+  justify-content: center;
+  align-items: center;
+}
+
+.firstpar,
+.secondpar {
+  margin : 10px;
+}
+
+.contenttexts {
+  width : 800px;
+  padding : 20px;
+}
+.vote {
+  width: 100px;
+  text-align: center;
+  justify-content: space-around;
+  padding : 10px;
+}
+
+h3 {
+  font-size: 24px;
+}
+p { 
+  font-size:  16px;
+  padding: 10px;
+}
+
+.banner {
+  margin-bottom: 10px;
+}
+
+i {
+  font-size: 30px;
+}
+button:focus{
+  outline: none;
+}
+button:active {
+  filter: brightness(70%);
+}
+button {
+  border: none;
+  font-size: 20px;
+  padding : 10px;
+  background-color: #0F3546;
+  color : #D1CFBA;
+  margin : 10px;
+}
+.post {
+  border: solid 2px #F7F1DE;
+}
+
+.firstpar,
+.secondpar,
+.post {
+  box-shadow: 5px 5px 10px rgba(92, 84, 88, 0.185);
+}
+.content {
+  background: rgba(15, 53, 70, 0);
+}
+.secondpar {
+  height: 400px;
+  background-color: none;
+}
