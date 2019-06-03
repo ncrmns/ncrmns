@@ -5,9 +5,13 @@
   padding: 0;
   font-family: 'Lato', sans-serif;
 }
+*::selection {
+  background-color: #0F3546;
+  color: white;
+}
 
 body {
-  background-color: #FBF5E5;
+  background-color: rgb(251, 245, 229);
 }
 div {
   background-color: white;
@@ -60,10 +64,12 @@ body {
 
 h3 {
   font-size: 24px;
+  color: #0F3546;
 }
 p { 
   font-size:  16px;
   padding: 10px;
+  color: #0F3546;
 }
 
 .banner {
@@ -72,20 +78,26 @@ p {
 
 i {
   font-size: 30px;
+  color: rgb(175, 190, 197);
 }
-button:focus{
+i:hover {
+  color: rgb(30, 45, 53);
+}
+.button:focus{
   outline: none;
 }
-button:active {
+.button:hover {
+  filter: brightness(120%);
+}
+.button:active {
   filter: brightness(70%);
 }
-button {
+.button {
   border: none;
   font-size: 20px;
   padding : 10px;
   background-color: #0F3546;
   color : #D1CFBA;
-  margin : 10px;
 }
 .post {
   border: solid 2px #F7F1DE;
@@ -102,4 +114,18 @@ button {
 .secondpar {
   height: 400px;
   background-color: none;
+}
+form {
+  height: 400px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: column;
+  padding : 20px;
+}
+input {
+  width : 240px;
+}
+.linktext {
+  height: 240px;
 }
